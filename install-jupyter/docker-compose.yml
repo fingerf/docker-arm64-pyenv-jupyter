@@ -1,0 +1,15 @@
+version: "3.9"
+volumes:
+  jupyter_storage:
+    external: true
+services:
+  jupyter-app:
+    build: .
+    image: debian-jupyter:v1.0
+    container_name: debian-jupyter-v1.0-container
+    restart: always
+    ports:
+      - "8888:8888"
+    volumes:
+      - ../../docker-container/jupyter/notebook:/notebook
+      - ../../docker-container/jupyter/.jupyter:/root/.jupyter/

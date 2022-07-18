@@ -1,0 +1,11 @@
+version: "3.9"
+volumes:
+  pyenv_storage:
+    external: true
+services:
+  jupyter-app:
+    build: .
+    image: debian-pyenv:v1.0
+    container_name: debian-pyenv-v1.0-container
+    volumes:
+      - ../install-jupyter/package:/root/export_tar_gz

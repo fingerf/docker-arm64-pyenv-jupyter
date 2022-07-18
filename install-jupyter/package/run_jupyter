@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+source $HOME/.bashrc $HOME/.profile
+if ! [ -f /root/.jupyter/jupyter_server_config.json ]; then
+    echo 'file is not found!'
+    cp -v /root/.jupyter.bak/jupyter_server_config.json /root/.jupyter/jupyter_server_config.json
+    jupyter-lab --allow-root --no-browser --notebook-dir=/notebook --ip=0.0.0.0 --port=8888
+else
+    jupyter-lab --allow-root --no-browser --notebook-dir=/notebook --ip=0.0.0.0 --port=8888
+fi
