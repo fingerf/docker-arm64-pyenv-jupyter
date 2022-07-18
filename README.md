@@ -52,10 +52,11 @@
 ### 别担心我料到这一点了，毕竟我自己还要用呢
 ### 首先访问 http://[主机IP]:8888 输入默认密码 123456
 ### 然后如图打开终端
-<img src="https://user-images.githubusercontent.com/94947393/179494632-fccd5e68-6d44-440c-b56d-82e8813c837d.png"/>
+<img src="https://user-images.githubusercontent.com/94947393/179494632-fccd5e68-6d44-440c-b56d-82e8813c837d.png" alt="打开终端" style="zoom: 50%;" />
 ### 在终端内执行密码修改指令 需输入两次 密码不会显示属于正常现象 密码配置文件会保存到容器内的 $HOME/.jupyter/jupyter_server_config.json 
     jupyter-lab password
-<img src="https://user-images.githubusercontent.com/94947393/179495057-b3a2148c-3abe-401f-98c7-647cd6521141.png"/>
+
+<img src="https://user-images.githubusercontent.com/94947393/179495057-b3a2148c-3abe-401f-98c7-647cd6521141.png" alt="密码修改指令" style="zoom: 50%;" />
     
 ## 感谢
 jupyter 官网：https://jupyter.org/install    
