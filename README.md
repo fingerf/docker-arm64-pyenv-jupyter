@@ -63,5 +63,5 @@ jupyter 官网：https://jupyter.org/install
 ## 参考
 install jupyter-lab：https://jupyterlab.readthedocs.io/en/latest/getting_started/installation.html  
 Common Extension Points：https://jupyterlab.readthedocs.io/en/latest/extension/extension_points.html   
-pyenv：https://github.com/pyenv/pyenv
+pyenv：https://github.com/pyenv/pyenv  
 virtualenv：https://github.com/pyenv/pyenv-virtualenv  
