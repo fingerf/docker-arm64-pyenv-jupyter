@@ -1,7 +1,4 @@
 version: "3.9"
-volumes:
-  jupyter_storage:
-    external: true
 services:
   jupyter-app:
     build: .
