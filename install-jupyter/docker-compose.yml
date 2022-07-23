@@ -2,8 +2,8 @@ version: "3.9"
 services:
   jupyter-app:
     build: .
-    image: debian-jupyter:v1.0
-    container_name: debian-jupyter-v1.0-container
+    image: smallflowercat1995/debian-jupyter:latest
+    container_name: debian-jupyter-latest-container
     restart: always
     ports:
       - "8888:8888"
