@@ -59,10 +59,6 @@ pyenv_install(){
 # 使用locale-gen命令生成中文本地支持
 sed -i 's;# zh_CN.UTF-8 UTF-8;zh_CN.UTF-8 UTF-8;g;s;en_GB.UTF-8 UTF-8;# en_GB.UTF-8 UTF-8;g' /etc/locale.gen ; locale-gen zh_CN ; locale-gen zh_CN.UTF-8
 
-locale-gen zh_CN
-locale-gen zh_CN.utf8
-locale-gen zh_CN.UTF-8
-
 # 写入环境变量
 cat << EOF >> /root/.bashrc
 export LANG=zh_CN.UTF-8
