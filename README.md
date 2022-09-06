@@ -36,10 +36,10 @@
     cd docker-arm64-pyenv-jupyter/build-pyenv
     # 无缓存构建
     docker-compose build --no-cache
-    # 构建完成后 后台启动 等待 pyenv 环境编译打包
-    docker-compose up -d
-    # 也可以查看日志看看有没有打包完成 会提示 ok done! 之后这个容器会终止
+    # 构建完成后 后台启动 等待 pyenv 环境编译打包，之后这个容器会终止
     # 此后每次重新执行第一部分容器都会重新编译拿出压缩包
+    docker-compose up -d
+    # 也可以查看日志看看有没有打包完成 会提示 ok done!  
     docker-compose logs -f
 ### 部分二：编译 jupyter 环境
     # 进入目录
