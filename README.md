@@ -57,7 +57,8 @@
    <img src="https://user-images.githubusercontent.com/94947393/179494632-fccd5e68-6d44-440c-b56d-82e8813c837d.png" title="打开终端" alt="打开终端" style="zoom: 50%;" />
    <img src="https://user-images.githubusercontent.com/94947393/179495057-b3a2148c-3abe-401f-98c7-647cd6521141.png" title="密码修改指令" alt="密码修改指令" style="zoom: 50%;" />
 
-## 新增
+## 修改新增
+    # 将在线克隆的方式了，太卡了，卡哭我了，哭了一晚上 >_< 呜呜呜
     # actions 自动获取 pyenv 和 pyenv-virtualenv 
     # 获取 github ip 方便我自己观察配置 hosts 访问 github 
 
