@@ -59,8 +59,7 @@
 
 ## 修改新增
     # 将在线克隆的方式注释了，太卡了，卡哭我了，哭了一晚上 >_< 呜呜呜
-    # actions 自动获取 pyenv 和 pyenv-virtualenv 
-    # 获取 github ip 方便我自己观察配置 hosts 访问 github 
+    # actions 自动获取 pyenv 和 pyenv-virtualenv   
 
 ## 感谢
 jupyter 官网：https://jupyter.org/install    
