@@ -19,6 +19,7 @@ date '+%Y-%m-%d %H:%M:%S'
 # 新建 notebook 存储目录
 mkdir -pv $NOTEBOOK_ROOT
 cp -rv /root/run_jupyter /usr/bin/
+chmod u+x /usr/bin/run_jupyter
 rm -rfv /root/run_jupyter
 
 for((i=1;i<4;i++)) ; do
