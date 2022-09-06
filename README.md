@@ -6,21 +6,33 @@
     以下是思路：  
       * 先构建 pyenv 配置最新的 python 环境并打包复制到 jupyter 环境目录，最后终止容器，实在太慢，我都哭了 >_<
       * 然后在 jupyter 环境将 pyenv 包解压配置环境变量安装 jupyter 然后维持其运行，这样容器就不会自己停止 
-    . 
-    ├── build-pyenv                # 这个是构建 pyenv 并将其打包到 jupyter 环境目录  
-    │   ├── docker-compose.yml     # 这个是构建 pyenv 的 docker-compose.yml 配置文件  
-    │   ├── Dockerfile             # 这个是构建 pyenv 的 docker 构建文件  
-    │   └── package                # 这个是构建 pyenv 的脚本文件所在目录   
-    │       ├── install.sh         # 这个是构建 pyenv 镜像的时候在容器内执行流程的脚本   
-    │       └── run_cp             # 这个是构建 pyenv 完成时最终会执行的打包拷贝脚本   
-    ├── install-jupyter            # 这个是构建 jupyter 环境目录  
-    │   ├── docker-compose.yml     # 这个是构建 jupyter 的 docker-compose.yml 配置文件，默认端口 8888  
-    │   ├── Dockerfile             # 这个是构建 jupyter 的 docker 构建文件  
-    │   └── package                # 这个是构建 jupyter 的脚本文件、pyenv包文件所在目录  
-    │       ├── install.sh         # 这个是构建 jupyter 镜像的时候在容器内执行流程的脚本，默认密码 123456  
-    │       ├── pyenv.tar.gz       # 这个是构建 jupyter pyenv包文  
-    │       └── run_jupyter        # 这个是启动 jupyter 的脚本  
-    └── pyenv-install.sh           # 这个是 pip 可能需要安装一些工具的脚本，没啥用，我一次也没执行过  
+
+    .
+    ├── build-pyenv                                  # 这个是构建 pyenv 并将其打包到 jupyter 环境目录  
+    │   ├── docker-compose.yml                       # 这个是构建 pyenv 的 docker-compose.yml 配置文件  
+    │   ├── Dockerfile                               # 这个是构建 pyenv 的 docker 构建文件  
+    │   └── package                                  # 这个是构建 pyenv 的脚本文件所在目录  
+    │       ├── apt-transport-https_2.2.4_all.deb    # 这个是 apt-transport-https 安装包  
+    │       ├── apt-utils_2.2.4_arm64.deb            # 这个是 apt-utils 安装包  
+    │       ├── ca-certificates_20210119_all.deb     # 这个是 ca-certificates 安装包  
+    │       ├── install.sh                           # 这个是构建 pyenv 镜像的时候在容器内执行流程的脚本   
+    │       ├── openssl_1.1.1n-0+deb11u3_arm64.deb   # 这个是 openssl 安装包   
+    │       ├── pyenv.tar.gz                         # 这个是 pyenv 官方源码包  
+    │       ├── pyenv-virtualenv.tar.gz              # 这个是 pyenv-virtualenv 官方源码包  
+    │       └── run_cp                               # 这个是构建 pyenv 完成时最终会执行的打包拷贝脚本  
+    ├── install-jupyter
+    │   ├── docker-compose.yml                       # 这个是构建 jupyter 的 docker-compose.yml 配置文件，默认端口 8888  
+    │   ├── Dockerfile                               # 这个是构建 jupyter 的 docker 构建文件  
+    │   └── package                                  # 这个是构建 jupyter 的脚本文件、pyenv包文件所在目录  
+    │       ├── apt-transport-https_2.2.4_all.deb    # 这个是 apt-transport-https 安装包  
+    │       ├── apt-utils_2.2.4_arm64.deb            # 这个是 apt-utils 安装包  
+    │       ├── ca-certificates_20210119_all.deb     # 这个是 ca-certificates 安装包  
+    │       ├── install.sh                           # 这个是构建 jupyter 镜像的时候在容器内执行流程的脚本，默认密码 123456  
+    │       ├── openssl_1.1.1n-0+deb11u3_arm64.deb   # 这个是 openssl 安装包  
+    │       └── run_jupyter                          # 这个是启动 jupyter 的脚本  
+    ├── pyenv-install.sh                             # 这个是 pip 可能需要安装一些工具的脚本，没啥用，我一次也没执行过  
+    └── update.sh                                    # 这个是 actions 所需要的自动更新 pyenv 和 pyenv-virtualenv 官方源码包脚本  
+
 
 ## 依赖
     arm64 设备
