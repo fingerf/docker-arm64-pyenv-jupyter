@@ -4,7 +4,7 @@ services:
     build: .
     image: smallflowercat1995/debian-jupyter:latest
     container_name: debian-jupyter-latest-container
-    restart: always
+    # restart: always
     ports:
       - "8888:8888"
     volumes:

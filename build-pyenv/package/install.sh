@@ -2,14 +2,16 @@
 
 # 打印检查环境是否导入
 export INSTALL_DIR=/root/.pyenv
-export PATH=/bin:/sbin:$INSTALL_DIR/bin:/usr/bin
+export DEBIAN_FRONTEND=noninteractive
+export PATH=$PATH:$INSTALL_DIR/bin
 
-echo $INSTALL_DIR
-echo $PATH
+
+echo -e "$PATH \n$DEBIAN_FRONTEND"
 
 mkdir_update_install(){
+mkdir -pv $INSTALL_DIR
 cp -rv /root/run_cp /usr/bin/
-chmod u+x /usr/bin/run_cp
+chmod -v u+x /usr/bin/run_cp
 rm -rfv /root/run_cp
 # 改时区
 date '+%Y-%m-%d %H:%M:%S'
@@ -19,13 +21,17 @@ ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "Asia/Shanghai" > /etc/timezone
 date '+%Y-%m-%d %H:%M:%S'
 
-for((i=1;i<4;i++)) ; do
-	echo "try $i"
-	# 更新软件列表源
-	apt-get update
-	# 防止遇到无法拉取 https 源的情况，先使用 http 源并安装
-	apt-get -y install apt-transport-https ca-certificates apt-utils
-done
+# for((i=1;i<4;i++)) ; do
+# 	echo "try $i"
+# 	# 更新软件列表源
+# 	apt-get update
+# 	# 防止遇到无法拉取 https 源的情况，先使用 http 源并安装
+# 	apt-get -y install apt-transport-https ca-certificates apt-utils
+# done
+
+dpkg -i /root/*.deb
+
+rm -rfv /root/*.deb
 
 # 备份源
 cp -rv /etc/apt/sources.list /etc/apt/sources.list.bak
@@ -56,32 +62,49 @@ done
 }
 
 git_clone(){
+
 # clone 编译 pyenv 写入环境
-for((i=1;i<4;i++)) ; do
-	echo "try $i"
-	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-	cd ~/.pyenv && src/configure && make -C src
-done
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
-echo 'eval "$(pyenv init -)"' >> ~/.profile
+# for((i=1;i<4;i++)) ; do
+# 	echo "try $i"
+# 	# git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+#       # curl -L -H "Connection: keep-alive" -k "https://github.com`curl -L 'https://github.com/pyenv/pyenv/releases' | grep '.tar.gz' | sed 's;";  ;g' | awk '{print $3}' | head -n 1`" -o pyenv.tar.gz -O
+#       tar zxvf pyenv.tar.gz -C ~/.pyenv
+#       mv -v .pyenv/*/.* .pyenv/*/* .pyenv/
+# 	cd ~/.pyenv && src/configure && make -C src
+# done
+
+tar zxvf /root/pyenv.tar.gz -C $INSTALL_DIR
+mv -v $INSTALL_DIR/*/.[^.]* $INSTALL_DIR/*/* $INSTALL_DIR/
+cd $INSTALL_DIR && src/configure && make -C src
+
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $HOME/.bashrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> $HOME/.bashrc
+echo 'eval "$(pyenv init -)"' >> $HOME/.bashrc
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $HOME/.profile
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> $HOME/.profile
+echo 'eval "$(pyenv init -)"' >> $HOME/.profile
 source $HOME/.bashrc $HOME/.profile
 
 # clone pyenv 管理插件写入环境
-for((i=1;i<4;i++)) ; do
-	echo "try $i"
-	git clone https://github.com/pyenv/pyenv-virtualenv.git `pyenv root`/plugins/pyenv-virtualenv
-done
-echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
-echo 'export PYENV_VIRTUALENV_DISABLE_PROMPT=1' >> ~/.bashrc
-echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.profile
-echo 'export PYENV_VIRTUALENV_DISABLE_PROMPT=1' >> ~/.profile
-source $HOME/.bashrc $HOME/.profile
-}
+# for((i=1;i<4;i++)) ; do
+# 	echo "try $i"
+# 	# git clone https://github.com/pyenv/pyenv-virtualenv.git `pyenv root`/plugins/pyenv-virtualenv
+#       # curl -L -H "Connection: keep-alive" -k "https://github.com`curl -L 'https://github.com/pyenv/pyenv-virtualenv/releases' | grep '.tar.gz' | sed 's;";  ;g' | awk '{print $3}' | head -n 1`" -o pyenv-virtualenv.tar.gz -O
+#       tar zxvf pyenv-virtualenv.tar.gz -C `pyenv root`/plugins/pyenv-virtualenv
+#       mv -v `pyenv root`/plugins/pyenv-virtualenv/*/.* `pyenv root`/plugins/pyenv-virtualenv/*/* `pyenv root`/plugins/pyenv-virtualenv/
+# done
 
+mkdir -pv `pyenv root`/plugins/pyenv-virtualenv
+tar zxvf /root/pyenv-virtualenv.tar.gz -C `pyenv root`/plugins/pyenv-virtualenv
+mv -v `pyenv root`/plugins/pyenv-virtualenv/*/.[^.]* `pyenv root`/plugins/pyenv-virtualenv/*/* `pyenv root`/plugins/pyenv-virtualenv/
+
+echo 'eval "$(pyenv virtualenv-init -)"' >> $HOME/.bashrc
+echo 'export PYENV_VIRTUALENV_DISABLE_PROMPT=1' >> $HOME/.bashrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> $HOME/.profile
+echo 'export PYENV_VIRTUALENV_DISABLE_PROMPT=1' >> $HOME/.profile
+source $HOME/.bashrc $HOME/.profile
+rm -rfv /root/pyenv-virtualenv.tar.gz /root/pyenv.tar.gz
+}
 
 clean_remove(){
 # 清理

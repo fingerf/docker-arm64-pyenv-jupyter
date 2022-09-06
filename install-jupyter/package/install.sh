@@ -3,9 +3,9 @@
 # 打印检查环境是否导入
 export NOTEBOOK_ROOT=/notebook
 export PASSWORD='123456'
+export DEBIAN_FRONTEND=noninteractive
 
-echo $NOTEBOOK_ROOT
-echo $PASSWORD
+echo "$NOTEBOOK_ROOT \n$PASSWORD \n$DEBIAN_FRONTEND"
 
 mkdir_update_install(){
 # 改时区
@@ -19,16 +19,20 @@ date '+%Y-%m-%d %H:%M:%S'
 # 新建 notebook 存储目录
 mkdir -pv $NOTEBOOK_ROOT
 cp -rv /root/run_jupyter /usr/bin/
-chmod u+x /usr/bin/run_jupyter
+chmod -v u+x /usr/bin/run_jupyter
 rm -rfv /root/run_jupyter
 
-for((i=1;i<4;i++)) ; do
-	echo "try $i"
-	# 更新软件列表源
-	apt-get update
-	# 防止遇到无法拉取 https 源的情况，先使用 http 源并安装
-	apt-get -y install apt-transport-https ca-certificates apt-utils
-done
+# for((i=1;i<4;i++)) ; do
+#       echo "try $i"
+#       # 更新软件列表源
+#       apt-get update
+#       # 防止遇到无法拉取 https 源的情况，先使用 http 源并安装
+#       apt-get -y install apt-transport-https ca-certificates apt-utils
+# done
+
+dpkg -i /root/*.deb
+
+rm -rfv /root/*.deb
 
 # 备份源
 cp -rv /etc/apt/sources.list /etc/apt/sources.list.bak
@@ -58,7 +62,11 @@ done
 
 pyenv_install(){
 # 使用locale-gen命令生成中文本地支持
-sed -i 's;# zh_CN.UTF-8 UTF-8;zh_CN.UTF-8 UTF-8;g;s;en_GB.UTF-8 UTF-8;# en_GB.UTF-8 UTF-8;g' /etc/locale.gen ; locale-gen zh_CN ; locale-gen zh_CN.UTF-8
+sed -i 's;# zh_CN.UTF-8 UTF-8;zh_CN.UTF-8 UTF-8;g' /etc/locale.gen
+
+locale-gen zh_CN
+locale-gen zh_CN.utf8
+locale-gen zh_CN.UTF-8
 
 # 写入环境变量
 cat << EOF >> /root/.bashrc
