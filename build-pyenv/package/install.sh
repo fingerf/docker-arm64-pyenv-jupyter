@@ -9,6 +9,7 @@ echo $PATH
 
 mkdir_update_install(){
 cp -rv /root/run_cp /usr/bin/
+chmod u+x /usr/bin/run_cp
 rm -rfv /root/run_cp
 # 改时区
 date '+%Y-%m-%d %H:%M:%S'
