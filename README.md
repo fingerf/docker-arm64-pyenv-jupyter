@@ -60,7 +60,7 @@
     docker-compose build --no-cache
     # 构建完成后 后台启动
     docker-compose up -d
-    # 也可以查看日志看看有没有 
+    # 也可以查看日志看看有没有失败 
     docker-compose logs -f
 
 ## 默认密码以及修改
