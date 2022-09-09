@@ -16,7 +16,7 @@ pyenv versions
 
 tar_gz(){
 cd $HOME
-tar zcvf /root/export_tar_gz/pyenv.tar.gz .pyenv
+tar zcf /root/export_tar_gz/pyenv.tar.gz .pyenv
 echo 'ok done!'
 }
 
