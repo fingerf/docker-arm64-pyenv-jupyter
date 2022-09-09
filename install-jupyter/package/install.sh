@@ -93,7 +93,7 @@ locale -a
 
 cd $HOME
 # 解压已经编译好的压缩包
-tar zxvf pyenv.tar.gz -C /root/
+tar zxf pyenv.tar.gz -C /root/
 
 # 写入环境变量
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
