@@ -1,4 +1,7 @@
 # docker-arm64-pyenv-jupyter
+## dockerhub
+    第一部分镜像：https://hub.docker.com/repository/docker/smallflowercat1995/debian-pyenv  
+    最终镜像：https://hub.docker.com/repository/docker/smallflowercat1995/debian-jupyter  
 ## 描述
     这是包含了 pyenv 和 jupyter 两个部分的 docker 构建材料  
     主要目的是为了使用 jupyter 本来没想这么复杂，我就是觉得 pyenv 好，为了自己的追求，只能辛苦一下  
