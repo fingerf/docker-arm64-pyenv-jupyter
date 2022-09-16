@@ -3,6 +3,8 @@
     第一部分镜像：https://hub.docker.com/repository/docker/smallflowercat1995/debian-pyenv  
     最终镜像：https://hub.docker.com/repository/docker/smallflowercat1995/debian-jupyter  
 ## 描述
+为了实现 actions workflow 自动化更新 pyenv 源码，需要添加 `GITHUB_TOKEN` 环境变量，这个是访问 GitHub API 的令牌，可以在 GitHub 主页，点击个人头像，Settings -> Developer settings -> Personal access tokens ，设置名字为 GITHUB_TOKEN 接着要勾选权限，勾选repo、admin:repo_hook和workflow即可，最后点击Generate token，如图所示  
+![image](https://user-images.githubusercontent.com/94947393/190651403-4bae4d58-1c90-401c-a390-3dc96c186c03.png)
     这是包含了 pyenv 和 jupyter 两个部分的 docker 构建材料  
     主要目的是为了使用 jupyter 本来没想这么复杂，我就是觉得 pyenv 好，为了自己的追求，只能辛苦一下  
     这个应该是可以改成分段构建的项目，我觉得怕中间出错，不敢把他们写成分段式构建，以后有机会我在改  
@@ -38,8 +40,7 @@
     │       └── run_jupyter                          # 这个是启动 jupyter 的脚本  
     ├── pyenv-install.sh                             # 这个是 pip 可能需要安装一些工具的脚本，没啥用，我一次也没执行过  
     └── update.sh                                    # 这个是 actions 所需要的自动更新 pyenv 和 pyenv-virtualenv 官方源码包脚本  
-    为了实现 actions workflow 自动化更新 pyenv 源码，需要添加 `GITHUB_TOKEN` 环境变量，这个是访问 GitHub API 的令牌，可以在 GitHub 主页，点击个人头像，Settings -> Developer settings -> Personal access tokens ，设置名字为 GITHUB_TOKEN 接着要勾选权限，勾选repo、admin:repo_hook和workflow即可，最后点击Generate token，如图所示  
-    ![image](https://user-images.githubusercontent.com/94947393/190651403-4bae4d58-1c90-401c-a390-3dc96c186c03.png)
+
 
 ## 依赖
     arm64 设备
