@@ -3,18 +3,19 @@
     第一部分镜像：https://hub.docker.com/repository/docker/smallflowercat1995/debian-pyenv  
     最终镜像：https://hub.docker.com/repository/docker/smallflowercat1995/debian-jupyter  
 ## 描述
-为了实现 actions workflow 自动化更新 pyenv 源码，需要添加 `GITHUB_TOKEN` 环境变量，这个是访问 GitHub API 的令牌，可以在 GitHub 主页，点击个人头像，Settings -> Developer settings -> Personal access tokens ，设置名字为 GITHUB_TOKEN 接着要勾选权限，勾选repo、admin:repo_hook和workflow即可，最后点击Generate token，如图所示  
-![image](https://user-images.githubusercontent.com/94947393/190651403-4bae4d58-1c90-401c-a390-3dc96c186c03.png)
-    这是包含了 pyenv 和 jupyter 两个部分的 docker 构建材料  
-    主要目的是为了使用 jupyter 本来没想这么复杂，我就是觉得 pyenv 好，为了自己的追求，只能辛苦一下  
-    这个应该是可以改成分段构建的项目，我觉得怕中间出错，不敢把他们写成分段式构建，以后有机会我在改  
-    以下是思路：  
-      * 先构建 pyenv 配置最新的 python 环境并打包复制到 jupyter 环境目录，最后终止容器，实在太慢，我都哭了 >_<
-      * 然后在 jupyter 环境将 pyenv 包解压配置环境变量安装 jupyter 然后维持其运行，这样容器就不会自己停止 
-    dockerhub 已经上传镜像： 
-      * https://hub.docker.com/repository/docker/smallflowercat1995/debian-pyenv
-      * https://hub.docker.com/repository/docker/smallflowercat1995/debian-jupyter
-    目录结构：
+1.为了实现 actions workflow 自动化更新 pyenv 源码，需要添加 `GITHUB_TOKEN` 环境变量，这个是访问 GitHub API 的令牌，可以在 GitHub 主页，点击个人头像，Settings -> Developer settings -> Personal access tokens ，设置名字为 GITHUB_TOKEN 接着要勾选权限，勾选repo、admin:repo_hook和workflow即可，最后点击Generate token，如图所示  
+![image](https://user-images.githubusercontent.com/94947393/190651403-4bae4d58-1c90-401c-a390-3dc96c186c03.png)  
+2.转到 Actions -> update pyenv and pyenv-virtualenv 并且启动 workflow，实现自动化
+3.这是包含了 pyenv 和 jupyter 两个部分的 docker 构建材料  
+4.主要目的是为了使用 jupyter 本来没想这么复杂，我就是觉得 pyenv 好，为了自己的追求，只能辛苦一下  
+5.这个应该是可以改成分段构建的项目，我觉得怕中间出错，不敢把他们写成分段式构建，以后有机会我在改  
+6.以下是思路：  
+  * 先构建 pyenv 配置最新的 python 环境并打包复制到 jupyter 环境目录，最后终止容器，实在太慢，我都哭了 >_<
+  * 然后在 jupyter 环境将 pyenv 包解压配置环境变量安装 jupyter 然后维持其运行，这样容器就不会自己停止 
+7.dockerhub 已经上传镜像： 
+  * https://hub.docker.com/repository/docker/smallflowercat1995/debian-pyenv
+  * https://hub.docker.com/repository/docker/smallflowercat1995/debian-jupyter
+8.目录结构：
     .
     ├── build-pyenv                                  # 这个是构建 pyenv 并将其打包到 jupyter 环境目录  
     │   ├── docker-compose.yml                       # 这个是构建 pyenv 的 docker-compose.yml 配置文件  
