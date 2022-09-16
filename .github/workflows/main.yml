@@ -6,7 +6,7 @@ name: update pyenv and pyenv-virtualenv
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   # Runs every 5 minutes.
-  # Runs every hour, on the hour.
+  # Runs at 00:00 UTC every day.
   # Actions schedules run at most every 5 minutes.
   schedule:
     # - cron: '*/5 * * * *'
@@ -23,8 +23,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@master
+      - name: 迁出代码
+        uses: actions/checkout@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       # Runs a single command using the runners shell
       - name: Run install curl
@@ -38,15 +40,29 @@ jobs:
           chmod u+x update.sh
           bash update.sh
           
-      # Runs git config add commit pull
-      - name: git config add commit pull
+      - name: 'Get Date'
         run: |
-          git config --global user.email smallflowercat1995@hotmail.com
-          git config --global user.name smallflowercat1995
+          echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
+
+      - name: 提交更改
+        run: |                 
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git pull origin master
           git add .
-          git commit -m "auto actions:`TZ=UTC-8 date +%Y-%m-%d' '%H:%M:%S`"
+          git commit -m "${{env.REPORT_DATE}} 提交"
           git pull --rebase
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+          
+      - name: Keepalive Workflow
+        # You may pin to the exact commit or the version.
+        # uses: gautamkrishnar/keepalive-workflow@1b33e4ef553c59eef0e3450666408021f4b0f456
+        uses: gautamkrishnar/keepalive-workflow@1.0.9
         with:
+          # GitHub access token with Repo scope
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: 推送更改
+        uses:  ad-m/github-push-action@master
+        with:
+          branch: master
           github_token: ${{ secrets.GITHUB_TOKEN }}
