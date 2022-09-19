@@ -66,7 +66,7 @@
 
     
 
-  <meta name="request-id" content="07C4:7674:22A4727:24B2700:63267417" data-pjax-transient="true"/><meta name="html-safe-nonce" content="6c2b63d6755e68a18dcf43a6181222559c486b5871ee2be4a691580b0530d642" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6IiIsInJlcXVlc3RfaWQiOiIwN0M0Ojc2NzQ6MjJBNDcyNzoyNEIyNzAwOjYzMjY3NDE3IiwidmlzaXRvcl9pZCI6IjIyODM3MjQ5OTg3NDk2MTUxMjciLCJyZWdpb25fZWRnZSI6InNlYSIsInJlZ2lvbl9yZW5kZXIiOiJzZWEifQ==" data-pjax-transient="true"/><meta name="visitor-hmac" content="13c409cec8de60bb2f066f29fc3c72cfba8ecbef045cfb64261a93d7098bf41a" data-pjax-transient="true"/>
+  <meta name="request-id" content="0443:6954:2BC7239:3E4D2C5:6327C4F5" data-pjax-transient="true"/><meta name="html-safe-nonce" content="181a6c55aa4f7fc5525a44f493f69177768db2382369b85c338df8f2f6fd9194" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6IiIsInJlcXVlc3RfaWQiOiIwNDQzOjY5NTQ6MkJDNzIzOTozRTREMkM1OjYzMjdDNEY1IiwidmlzaXRvcl9pZCI6IjgxMzkxOTU2NzczNzIwNDA0MzciLCJyZWdpb25fZWRnZSI6ImlhZCIsInJlZ2lvbl9yZW5kZXIiOiJpYWQifQ==" data-pjax-transient="true"/><meta name="visitor-hmac" content="7a2d493f53371038df36049254ed5c9457362c83ceeea42de0e2dd41fb875b35" data-pjax-transient="true"/>
 
 
     <meta name="page-subject" content="GitHub">
@@ -555,7 +555,7 @@
           spellcheck="false"
           autocomplete="off"
         >
-        <input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="fj+LOdmDyhJZmrUZQtrRzF4qolrpRo00mavXZamVFnU9DhC8+vhy8GWkHxzmjY40y3Fk23z4xQxnIRZr3oblyA==" />
+        <input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="O/gTOuQ+2A5+HcWE+78SjNqqbQhgnOKdMUZErjZCxqPiTAAdzBnYuK8ROJ5D+QvVmLNRSvbAP8jmAojf1FGzzA==" />
         <input type="hidden" class="js-site-search-type-field" name="type" >
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" aria-hidden="true" class="mr-1 header-search-key-slash"><path fill="none" stroke="#979A9C" opacity=".4" d="M3.5.5h12c1.7 0 3 1.3 3 3v13c0 1.7-1.3 3-3 3h-12c-1.7 0-3-1.3-3-3v-13c0-1.7 1.3-3 3-3z"></path><path fill="#979A9C" d="M11.8 6L8 15.1h-.9L10.8 6h1z"></path></svg>
 
