@@ -12,9 +12,9 @@
 6.以下是思路：  
   * 先构建 pyenv 配置最新的 python 环境并打包复制到 jupyter 环境目录，最后终止容器，实在太慢，我都哭了 >_<
   * 然后在 jupyter 环境将 pyenv 包解压配置环境变量安装 jupyter 然后维持其运行，这样容器就不会自己停止 
-7.dockerhub 已经上传镜像： 
-  * https://hub.docker.com/repository/docker/smallflowercat1995/debian-pyenv
-  * https://hub.docker.com/repository/docker/smallflowercat1995/debian-jupyter
+7.dockerhub 已经上传镜像：  
+  * https://hub.docker.com/repository/docker/smallflowercat1995/debian-pyenv  
+  * https://hub.docker.com/repository/docker/smallflowercat1995/debian-jupyter  
 8.目录结构：
     .
     ├── build-pyenv                                  # 这个是构建 pyenv 并将其打包到 jupyter 环境目录  
