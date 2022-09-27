@@ -18,6 +18,7 @@
   * https://hub.docker.com/repository/docker/smallflowercat1995/debian-jupyter  
 
 8.目录结构：  
+
     .  
     ├── build-pyenv                                  # 这个是构建 pyenv 并将其打包到 jupyter 环境目录  
     │   ├── docker-compose.yml                       # 这个是构建 pyenv 的 docker-compose.yml 配置文件  
