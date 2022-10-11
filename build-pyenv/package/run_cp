@@ -7,8 +7,8 @@ mkdir -p /root/export_tar_gz
 
 pyenv_install(){
 # 安装最新版 python 配置自定义虚拟环境
-pyenv versions | sed 's;*;;g;s;/; ;g' | grep -oE ' 3(.){1,7}' | awk '{print $1}' | xargs pyenv uninstall -f
-pyenv install -v `pyenv install --list | grep -oE ' 3(.){1,7}' | grep -v dev | tail -n -2 | head -n 1`
+pyenv versions | sed 's;*;;g;s;/; ;g' | grep -oE ' 3(.){1,8}' | awk '{print $1}' | xargs pyenv uninstall -f
+pyenv install -v `pyenv install --list | grep -oE ' 3(.){1,8}' | grep -v dev | grep -v rc | tail -n -1 | head -n 1`
 pyenv rehash
 pyenv version
 pyenv versions
