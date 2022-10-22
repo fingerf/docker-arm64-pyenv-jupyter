@@ -33,10 +33,10 @@ pip install dash plotly-express dash_bootstrap_components
 pip install autopep8 yapf
  
 # 生成 jupyter 默认配置文件
-jupyter-notebook --generate-config --allow-root
+# jupyter-notebook --generate-config --allow-root
  
 # 跳过检查
-jupyter contrib nbextension install --user --skip-running-check 
+# jupyter contrib nbextension install --user --skip-running-check 
  
 # jupyterlab插件
 jupyter labextension install @jupyter-widgets/jupyterlab-manager 
