@@ -54,7 +54,7 @@ for((i=1;i<4;i++)) ; do
 	# 更新软件列表源
 	apt-get update
 	# 安装一些工具和 pyenv python 必备依赖
-	apt-get -y install procps htop python3-tk build-essential locales libxml2-dev libxslt1-dev
+	apt-get -y install libxml2-dev libxslt1-dev procps htop python3-tk build-essential locales
         apt-get install -fy
 done
 }
