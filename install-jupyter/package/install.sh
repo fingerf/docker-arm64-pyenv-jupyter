@@ -107,7 +107,7 @@ echo 'export PYENV_VIRTUALENV_DISABLE_PROMPT=1' >> ~/.bashrc
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.profile
 echo 'export PYENV_VIRTUALENV_DISABLE_PROMPT=1' >> ~/.profile
 source $HOME/.bashrc $HOME/.profile
-pyenv_var=`pyenv versions | sed 's;*;;g;s;/; ;g' | grep -oE ' 3(.){1,8}' | awk '{print $1}'`
+pyenv_var=`pyenv versions | sed 's;*;;g;s;/; ;g;s; ;;g' | grep -oE '^[0-9]*\.?[0-9]*\.?[0-9]*?$' | awk '{print $1}'`
 pyenv global $pyenv_var
 pyenv virtualenv $pyenv_var pyenv
 pyenv global pyenv $pyenv_var system
