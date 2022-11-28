@@ -54,7 +54,7 @@ for((i=1;i<4;i++)) ; do
 	# 更新软件列表源
 	apt-get update
 	# 安装一些工具和 pyenv python 必备依赖
-	apt-get -y install libxml2-dev libxslt1-dev procps htop python3-tk build-essential locales
+	apt-get -y install zlib1g-dev libxml2-dev libxslt1-dev procps htop python3-tk build-essential locales
         apt-get install -fy
 done
 }
@@ -125,13 +125,8 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 pip install pip -U
 
 # jupyter notebook 相关
-pip --no-cache-dir install jupyter --use-pep517
-pip --no-cache-dir install notebook
-pip --no-cache-dir install voila
-pip --no-cache-dir install jupyterlab
-pip --no-cache-dir install jupyter-dash
-pip --no-cache-dir install jupyterlab-dash
-pip --no-cache-dir install jupyter_contrib_nbextensions --use-pep517
+pip --no-cache-dir install markupsafe lxml --use-pep517
+pip --no-cache-dir install jupyter jupyterlab notebook voila jupyter-dash jupyterlab-dash jupyter_contrib_nbextensions
 
 # 生成 jupyter 默认配置文件
 jupyter-notebook --generate-config --allow-root
