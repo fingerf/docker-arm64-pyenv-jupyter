@@ -125,7 +125,13 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 pip install pip -U
 
 # jupyter notebook 相关
-pip  --use-pep517 --no-cache-dir install jupyter notebook voila jupyterlab jupyter-dash jupyterlab-dash jupyter_contrib_nbextensions
+pip --no-cache-dir install jupyter --use-pep517
+pip --no-cache-dir install notebook
+pip --no-cache-dir install voila
+pip --no-cache-dir install jupyterlab
+pip --no-cache-dir install jupyter-dash
+pip --no-cache-dir install jupyterlab-dash
+pip --no-cache-dir install jupyter_contrib_nbextensions --use-pep517
 
 # 生成 jupyter 默认配置文件
 jupyter-notebook --generate-config --allow-root
